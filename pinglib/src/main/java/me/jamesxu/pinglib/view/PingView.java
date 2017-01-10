@@ -15,6 +15,7 @@ import me.jamesxu.pinglib.service.LDNetDiagnoService;
 
 public class PingView extends ScrollView implements LDNetDiagnoListener {
     private LDNetDiagnoService _netDiagnoService;
+    private LDNetDiagnoListener listener;
     private TextView textView;
     private String showInfo = "";
     private String userId = "--";
@@ -72,7 +73,15 @@ public class PingView extends ScrollView implements LDNetDiagnoListener {
 
     @Override
     public void OnNetDiagnoFinished(String log) {
+        if (listener != null) {
+            listener.OnNetDiagnoFinished(log);
+        }
         setText(log);
+        fullScroll(ScrollView.FOCUS_DOWN);
+    }
+
+    public void setLDNetDiagnoListener(LDNetDiagnoListener listener) {
+        this.listener = listener;
     }
 
     private void setText(String log) {
@@ -81,7 +90,11 @@ public class PingView extends ScrollView implements LDNetDiagnoListener {
 
     @Override
     public void OnNetDiagnoUpdated(String log) {
+        if (listener != null) {
+            listener.OnNetDiagnoUpdated(log);
+        }
         showInfo += log;
         setText(showInfo);
+        fullScroll(ScrollView.FOCUS_DOWN);
     }
 }

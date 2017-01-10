@@ -147,21 +147,19 @@ public class LDNetDiagnoService extends
 
             // 诊断ping信息, 同步过程
             recordStepInfo("\n开始ping...");
-            if (!(_isNetConnected && _isDomainParseOk && _isSocketConnected)) {// 联网&&DNS解析成功&&connect测试成功
-                _netPinger = new LDNetPing(this, 4);
-                recordStepInfo("ping...127.0.0.1");
-                _netPinger.exec("127.0.0.1", false);
-                recordStepInfo("ping本机IP..." + _localIp);
-                _netPinger.exec(_localIp, false);
-                if (LDNetUtil.NETWORKTYPE_WIFI.equals(_netType)) {// 在wifi下ping网关
-                    recordStepInfo("ping本地网关..." + _gateWay);
-                    _netPinger.exec(_gateWay, false);
-                }
-                recordStepInfo("ping本地DNS1..." + _dns1);
-                _netPinger.exec(_dns1, false);
-                recordStepInfo("ping本地DNS2..." + _dns2);
-                _netPinger.exec(_dns2, false);
+            _netPinger = new LDNetPing(this, 4);
+            recordStepInfo("ping...127.0.0.1");
+            _netPinger.exec("127.0.0.1", false);
+            recordStepInfo("ping本机IP..." + _localIp);
+            _netPinger.exec(_localIp, false);
+            if (LDNetUtil.NETWORKTYPE_WIFI.equals(_netType)) {// 在wifi下ping网关
+                recordStepInfo("ping本地网关..." + _gateWay);
+                _netPinger.exec(_gateWay, false);
             }
+            recordStepInfo("ping本地DNS1..." + _dns1);
+            _netPinger.exec(_dns1, false);
+            recordStepInfo("ping本地DNS2..." + _dns2);
+            _netPinger.exec(_dns2, false);
 
             if (_netPinger == null) {
                 _netPinger = new LDNetPing(this, 4);

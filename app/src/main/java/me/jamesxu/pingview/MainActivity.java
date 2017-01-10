@@ -15,6 +15,6 @@ public class MainActivity extends AppCompatActivity {
         pingView.setDeviceId("12312424423");
         pingView.setUserId("342");
         pingView.setVersionName("1.1.1");
-        pingView.pingHost("www.baidu.com");
+        pingView.pingHost("talaris.ele.me");
     }
 }
