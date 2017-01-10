@@ -14,7 +14,7 @@ and
 ### Step 1
 ##### Install with gradle
         dependencies {
-            compile 'com.xujinyang.pingview:pinglib:1.0.1'
+            compile 'com.xujinyang.pingview:pinglib:1.0.3'
         }
 ### Step 2
 
