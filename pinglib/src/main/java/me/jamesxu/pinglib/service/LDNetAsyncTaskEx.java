@@ -12,8 +12,6 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * @author liujie
- *         <p>
- *         <p>
  *         The most part is copied for {@link AsyncTask}.
  *         <p>
  *         What's we do here is to control the executor and the core
